@@ -69,28 +69,42 @@ function ejecutarOpcion(entrada_1) {
       break;
 
     case "5":
-      const totalVentas = productos.reduce((total, p) => total + p.ventas, 0);
-      output.innerHTML = `<p>Total de ventas: ${totalVentas}</p>`;
+      console.log("--- Valor total del inventario ---");
+      const totalInventario = productos.reduce((acc, p) => acc + p.precio * p.stock, 0);
+      console.log(`Total: $${totalInventario}`);
       break;  
 
     case "6":
-      const totalStock = productos.reduce((total, p) => total + p.stock, 0);
-      output.innerHTML = `<p>Total de stock disponible: ${totalStock}</p>`;
+      console.log("--- Total de ventas ---");
+      const totalVentas = productos.reduce((acc, p) => acc + p.ventas, 0);
+      console.log(`Total vendido: ${totalVentas} unidades`);
       break;
       
     case "7":
-      const promedioPrecio = productos.reduce((total, p) => total + p.precio, 0) / productos.length;
-      output.innerHTML = `<p>Precio promedio de los productos: ${promedioPrecio.toFixed(2)}</p>`;
+      console.log("--- Ordenados por precio (menor a mayor) ---");
+      const porPrecio = [...productos].sort((a, b) => a.precio - b.precio);
+      porPrecio.forEach(p => console.log(`${p.nombre}: $${p.precio}`));
       break;
 
     case "8":
-      const masBarato = productos.reduce((barato, p) => p.precio < barato.precio ? p : barato, productos[0]);
-      output.innerHTML = `<p>Producto más barato: ${masBarato.nombre} - Precio: ${masBarato.precio}</p>`;
+      const nombre = prompt("Ingresa el nombre del producto:");
+      const encontrado = productos.find(p => p.nombre.toLowerCase() === nombre.toLowerCase());
+      console.log("--- Buscar producto ---");
+      if (encontrado) {
+        console.log(`Encontrado: ${encontrado.nombre} | $${encontrado.precio} | Stock: ${encontrado.stock}`);
+      } else {
+        console.log("Producto no encontrado.");
+      }
       break;
 
     case "9":
-      const masCaro = productos.reduce((caro, p) => p.precio > caro.precio ? p : caro, productos[0]);
-      output.innerHTML = `<p>Producto más caro: ${masCaro.nombre} - Precio: ${masCaro.precio}</p>`;
+      console.log("--- some() y every() ---");
+      const hayAgotados = productos.some(p => p.stock === 0);
+      const todosConStock = productos.every(p => p.stock > 0);
+      console.log(`¿Hay algún agotado? ${hayAgotados}`);
+      console.log(`¿Todos tienen stock? ${todosConStock}`);
       break;
+
+    
   }
 }
