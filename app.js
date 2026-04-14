@@ -17,6 +17,7 @@ input.addEventListener("keydown", function (e) {
 
 function ejecutarOpcion(entrada_1) {
   switch (entrada_1) {
+
     case "1":
       output.innerHTML = `
         <table>
@@ -42,6 +43,117 @@ function ejecutarOpcion(entrada_1) {
               </tr>
             `).join("")}
           </tbody>
+        </table>
+      `;
+      break;
+
+    case "2":
+      const disponibles = productos.filter(p => p.stock < 6 && p.stock > 0);
+      output.innerHTML = `
+        <table>
+          <tr><th>NOMBRE</th><th>STOCK</th></tr>
+          ${disponibles.map(p => `
+            <tr>
+              <td>${p.nombre}</td>
+              <td>${p.stock}</td>
+            </tr>
+          `).join("")}
+        </table>
+      `;
+      break;
+
+    case "3":
+      const Agotado = productos.filter(p => p.stock == 0);
+
+      output.innerHTML = `
+        <table>
+          <tr><th>NOMBRE</th><th>VENTAS</th></tr>
+          ${Agotado.map(p => `
+            <tr>
+              <td>${p.nombre}</td>
+              <td>${p.stock}</td>
+            </tr>
+          `).join("")}
+        </table>
+      `;
+      break;
+
+      case "4":
+       const cua = productos.filter(p => p.precio );
+       output.innerHTML = `
+      <table>
+          <tr>
+            <th>NOMBRE</th>
+             <th>PRECIO</th>
+          </tr>
+            ${cua.map(p => `
+           <tr>
+            <td>${p.nombre}</td>
+            <td>${p.precio}</td>
+           </tr>
+           `).join("")}
+        </table>
+       `;
+       break;
+
+    
+
+    case "5":
+      const totalinventario = productos.reduce((t, p) => t + p.precio, 0);
+      output.innerHTML = `
+        <table>
+          <tr><th>VALOR TOTAL INVENTARIO</th></tr>
+          <tr><td>${totalinventario}</td></tr>
+        </table>
+      `;
+      break;
+
+    case "6":
+      const totalventas = productos.reduce((t, p) => t + p.ventas, 0);
+      output.innerHTML = `
+        <table>
+          <tr><th>TOTAL DE VENTAS</th></tr>
+          <tr><td>${totalventas}</td></tr>
+        </table>
+      `;
+      break;
+
+    case "7":
+      const promedio = productos.reduce((t, p) => t + p.precio, 0) / productos.length;
+      output.innerHTML = `
+        <table>
+          <tr><th>PROMEDIO PRECIO</th></tr>
+          <tr><td>${promedio.toFixed(2)}</td></tr>
+        </table>
+      `;
+      break;
+
+    case "8":
+      const masBarato = productos.reduce((b, p) =>
+        p.precio < b.precio ? p : b, productos[0]);
+
+      output.innerHTML = `
+        <table>
+          <tr><th>NOMBRE</th><th>PRECIO</th></tr>
+          <tr>
+            <td>${masBarato.nombre}</td>
+            <td>${masBarato.precio}</td>
+          </tr>
+        </table>
+      `;
+      break;
+
+    case "9":
+      const masCaro = productos.reduce((c, p) =>
+        p.precio > c.precio ? p : c, productos[0]);
+
+      output.innerHTML = `
+        <table>
+          <tr><th>NOMBRE</th><th>PRECIO</th></tr>
+          <tr>
+            <td>${masCaro.nombre}</td>
+            <td>${masCaro.precio}</td>
+          </tr>
         </table>
       `;
       break;
