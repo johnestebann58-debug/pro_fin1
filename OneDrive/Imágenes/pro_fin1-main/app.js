@@ -38,5 +38,41 @@ function ejecutarOpcion(entrada_1) {
             
         default:
             output.innerHTML = "<p>Opción no válida</p>"; 
+
+       case "4":  
+            const categorias = [...new Set(productos.map(p => p.categoria))];
+            output.innerHTML = categorias
+
+            .map(c => `<p>${c}</p>`)  
+            
+        case "5":
+            const totalVentas = productos.reduce((total, p) => total + p.ventas, 0);
+            output.innerHTML = `<p>Total de ventas: ${totalVentas}</p>`;  
+
+            .map(p => `<p>${p.id} - ${p.nombre} - ${p.categoria} - ${p.precio} - ${p.stock} - ${p.ventas} </p>`)
+
+        case "6":
+            const promedioVentas = productos.reduce((total, p) => total + p.ventas, 0) / productos.length;
+            output.innerHTML = `<p>Promedio de ventas: ${promedioVentas.toFixed(2)}</p>`; 
+
+            .map(p => `<p>${p.id} - ${p.nombre} - ${p.categoria} - ${p.precio} - ${p.stock} - ${p.ventas} </p>`)   
+            
+        case "7":
+            const masVendidos = productos.sort((a, b) => b.ventas - a.ventas).slice(0, 3);
+            output.innerHTML = masVendidos
+
+            .map(p => `<p>${p.id} - ${p.nombre} - ${p.categoria} - ${p.precio} - ${p.stock} - ${p.ventas} </p>`)  
+
+        case "8":
+            const menosVendidos = productos.sort((a, b) => a.ventas - b.ventas).slice(0, 3);
+            output.innerHTML = menosVendidos
+
+            .map(p => `<p>${p.id} - ${p.nombre} - ${p.categoria} - ${p.precio} - ${p.stock} - ${p.ventas} </p>`)
+            
+         case "9":
+            const sinStock = productos.filter(p => p.stock === 0);
+            output.innerHTML = sinStock
+
+            .map(p => `<p>${p.id} - ${p.nombre} - ${p.categoria} - ${p.precio} - ${p.stock} - ${p.ventas} </p>`)
           }
 }
