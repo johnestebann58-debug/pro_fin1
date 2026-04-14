@@ -20,6 +20,7 @@ function ejecutarOpcion(entrada_1) {
 
         case "1":
             output.innerHTML = productos
+
             .map(p => `<p>${p.id} - ${p.nombre} - ${p.categoria} - ${p.precio} - ${p.stock} - ${p.ventas} </p>`)
     }
 }
