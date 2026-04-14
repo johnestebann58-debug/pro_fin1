@@ -1,19 +1,25 @@
 <html>
     <head>
+        <link rel="stylesheet" href="estilos.css">
         <title>GESTION DE INVENTARIOS</title>
     </head>
     <body style="background-color:#030712 ; justify-content: center; display: flex;">
-        <div style="display: flex; justify-content: center; background-color: aliceblue; width: 800px; height: 1000px; align-content: center; margin-top: 30px; border-radius: 50px; border: 1px solid black;">
-        <div style="background-color: aliceblue; width: 800px; height: 1000px;margin-top: 110px; border-radius: 40px; border: 1 px solid black; justify-content: center;">
-         <p><h1 style="text-align: center; font-family: arial; color: black; margin-top: 40px;"><strong>GESTION DE INVENTARIOS</strong></h1></p><br>
-
-        <p><h3 style="font-family: arial; text-align: center;">Digite el numero de la funcion</h3></p><br>
-         <p style="margin-left: 40px;">
+        <div style="background-color: aliceblue; width: 800px; height: 880px;margin-top: 30px; border-radius: 40px; border: 1 px solid black;">
+           <p><h1 style="text-align: center; font-family: arial; color: black;"><strong>GESTION DE INVENTARIOS</strong></h1></p><br>
+           <p><h3 style="font-family: arial; text-align: center; margin-top: 2px;">Digite el numero de la funcion</h3></p><br>
+         <p style="margin-left: 40px; font-family: arial;">
            1. Mostar todos los productos<br>
+           2. Stock bajo<br>
+           3. Productos agotados<br>
+           4. Nombres y precios<br>
+           5. Valor del innventario<br>
+           6. Total de vetas<br>
+           7. Productos por precios<br>
+           8. Busca un productos<br>
+           9. Verificacion de productos<br>
          </p> 
-        <p style="text-align: center;"><input type="number" id="entrada_1" placeholder="Ingrese un numero de los mostrados" ></p><br>
-        <div id="salida_1" style="background-color: rgb(27, 27, 27); width: 680px; height: 500px; border-radius: 40px; border: 1 px solid black; margin-left: 6%; color: aliceblue; font-family: Arial, Helvetica, sans-serif; padding-left: 30px; padding-top: 30px;"></div>
-
+        <p style="text-align: center;"><input style="width: 200px; height: 40px; border-radius: 10px; border: 2px solid black; font-family: sans-serif;" type="number" id="entrada_1" placeholder="Ingrese un numero " ></p><br>
+        <pre id="salida_1" style="background-color: rgb(27, 27, 27); width: 680px; height: 370px; border-radius: 40px; border: 1 px solid black; padding-top: 10px; padding-left: 20px; margin-left: 6%; font-family: arial; color: white; "></pre>
         </div>
 <script src="app.js"></script>
     </body>
