@@ -143,19 +143,28 @@ function ejecutarOpcion(entrada_1) {
       `;
       break;
 
-    case "9":
-      const masCaro = productos.reduce((c, p) =>
-        p.precio > c.precio ? p : c, productos[0]);
+      case "9":
 
-      output.innerHTML = `
-        <table>
-          <tr><th>NOMBRE</th><th>PRECIO</th></tr>
-          <tr>
-            <td>${masCaro.nombre}</td>
-            <td>${masCaro.precio}</td>
-          </tr>
-        </table>
-      `;
+        console.log("--- some() y every() ---");
+        const hayAgotados = productos.some(p => p.stock === 0);
+        const todosConStock = productos.every(p => p.stock > 0);
+        console.log('¿Hay algún agotado? '${hayAgotados});
+        console.log('¿Todos tienen stock?' ${todosConStock});
       break;
-  }
+
+      case "10":
+        console.log("rango");
+        productos.forEach(p=> {
+          let rango;
+          switch(true) {
+            case p.precio <5000: rango = "eonomico";
+          break;  
+        
+          case p.precio <150000: rango = "normal";
+          break;
+
+          default:           rango = "muy caro";
+         }
+          console.log( ${p.nombre}: ${rango});
+      break;    
 }
